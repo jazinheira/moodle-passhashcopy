@@ -57,7 +57,7 @@ foreach ($users as $user) {
 		$badusers[] = $user;
 	}
 }
-$users->close();
+unset($users);
 mysqli_close($moodledb); //Disconnect from external database
 
 if (isset($badusers)) {
