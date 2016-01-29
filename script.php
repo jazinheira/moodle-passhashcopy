@@ -54,7 +54,6 @@ foreach ($users as $user) {
 	}
 	else {
 		echo ("Unable to update password for " . $user['email'] . "ERROR ". $moodledb->error."\n");
-		echo ("")
 		$badusers[] = $user;
 	}
 }
