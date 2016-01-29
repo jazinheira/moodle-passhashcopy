@@ -48,7 +48,7 @@ echo "Connected to " . $moodledb->host_info . "\n";
 
 //Update the password hash in the moodle database
 foreach ($users as $user) {
-	$query = "UPDATE ".$mysql_moodle_table." SET ".$mysql_moodle_passwordfield."  = '".$user['password']."' WHERE ".$mysql_moodle_emailfield." = ".$user['email'];
+	$query = "UPDATE ".$mysql_moodle_table." SET ".$mysql_moodle_passwordfield."  = '".$user['password']."' WHERE ".$mysql_moodle_emailfield." = '".$user['email']."'";
 	if ($moodledb->query($query)) {
 		echo ("Successfully updated password for " . $user['email'] . "\n");
 	}
