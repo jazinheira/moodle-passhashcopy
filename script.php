@@ -36,7 +36,7 @@ while ($row = $usersres->fetch_assoc()) {
 echo "Found " . count($users) . " users in external database \n";
 
 unset($usersres); //Destroy $courseres result to save memory
-$extdb->close; //Disconnect from external database
+mysqli_close($extdb); //Disconnect from external database
 
 
 //Connect to moodle database
@@ -58,7 +58,7 @@ foreach ($users as $user) {
 	}
 }
 unset($users);
-$moodledb->close; //Disconnect from external database
+mysqli_close($moodledb); //Disconnect from external database
 
 if (isset($badusers)) {
 	//We had some users that weren't able to be updated; print these.
