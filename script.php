@@ -35,7 +35,7 @@ while ($row = $usersres->fetch_assoc()) {
 
 echo "Found " . count($users) . " users in external database \n";
 
-unset($usersres); //Destroy $courseres result to save memory
+$usersres->close(); //Destroy $courseres result to save memory
 mysqli_close($extdb); //Disconnect from external database
 
 
@@ -53,11 +53,12 @@ foreach ($users as $user) {
 		echo ("Successfully updated password for " . $user['email'] . "\n");
 	}
 	else {
-		echo ("Unable to update password for " . $user['email'] . "\n");
+		echo ("Unable to update password for " . $user['email'] . "ERROR ". $moodledb->error."\n");
+		echo ("")
 		$badusers[] = $user;
 	}
 }
-unset($users);
+$users->close();
 mysqli_close($moodledb); //Disconnect from external database
 
 if (isset($badusers)) {
